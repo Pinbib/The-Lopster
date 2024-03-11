@@ -5,4 +5,4 @@ import JSON from "./JSON.js";
 import YAML from "./_YAML.js";
 import TOML from "./TOML.js";
 
-export default {DB, ...Extension, JSON, YAML, TOML};
+export default { DB, ...Extension, JSON, YAML, TOML };
