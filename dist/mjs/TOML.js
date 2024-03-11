@@ -1,3 +1,4 @@
+// @ts-ignore
 import toml from "@iarna/toml";
 import { Extension } from "./Extension.js";
 // @ts-ignore
