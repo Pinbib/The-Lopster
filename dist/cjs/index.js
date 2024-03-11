@@ -29,4 +29,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const DB_js_1 = __importDefault(require("./DB.js"));
 const Extension = __importStar(require("./Extension.js"));
 const JSON_js_1 = __importDefault(require("./JSON.js"));
-exports.default = { DB: DB_js_1.default, ...Extension, JSON: JSON_js_1.default };
+const _YAML_js_1 = __importDefault(require("./_YAML.js"));
+exports.default = { DB: DB_js_1.default, ...Extension, JSON: JSON_js_1.default, YAML: _YAML_js_1.default };

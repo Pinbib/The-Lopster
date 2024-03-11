@@ -1,0 +1,4 @@
+// @ts-ignore
+import yaml from "yaml";
+import { Extension } from "./Extension.js";
+export default new Extension(".yaml", yaml.parse, (value) => yaml.stringify(value, null, 2));
