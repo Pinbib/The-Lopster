@@ -4,4 +4,5 @@ import JSON from "./JSON.js";
 import YAML from "./_YAML.js";
 import TOML from "./TOML.js";
 import XML from "./XML.js";
-export default { DB, ...Extension, JSON, YAML, TOML, XML };
+import INI from "./_INI.js";
+export default { DB, ...Extension, JSON, YAML, TOML, XML, INI };

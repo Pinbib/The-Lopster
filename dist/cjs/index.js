@@ -32,4 +32,5 @@ const JSON_js_1 = __importDefault(require("./JSON.js"));
 const _YAML_js_1 = __importDefault(require("./_YAML.js"));
 const TOML_js_1 = __importDefault(require("./TOML.js"));
 const XML_js_1 = __importDefault(require("./XML.js"));
-exports.default = { DB: DB_js_1.default, ...Extension, JSON: JSON_js_1.default, YAML: _YAML_js_1.default, TOML: TOML_js_1.default, XML: XML_js_1.default };
+const _INI_js_1 = __importDefault(require("./_INI.js"));
+exports.default = { DB: DB_js_1.default, ...Extension, JSON: JSON_js_1.default, YAML: _YAML_js_1.default, TOML: TOML_js_1.default, XML: XML_js_1.default, INI: _INI_js_1.default };
