@@ -1,6 +1,6 @@
 {
   "name": "the-lopster",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A small library for manipulating json files and using them to save data.",
   "main": "./dist/mjs/index.js",
   "scripts": {},
@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@ltd/j-toml": "^1.38.0",
+    "xml-js": "^1.6.11",
     "yaml": "^2.4.1"
   }
 }

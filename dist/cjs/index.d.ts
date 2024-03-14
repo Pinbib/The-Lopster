@@ -4,6 +4,7 @@ declare const _default: {
     JSON: Extension.Extension;
     YAML: Extension.Extension;
     TOML: Extension.Extension;
+    XML: Extension.Extension;
     Extension: typeof Extension.Extension;
     DB: typeof DB;
 };
