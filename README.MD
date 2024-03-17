@@ -11,13 +11,13 @@ import DB from "the-lopster";
 ## CommonJS
 
 ```js
-const DB = require("the-lopster/cjs").default;
+const DB = require("the-lopster/dist/cjs").default;
 ```
 
 ## new DB
 
 ```js
-let db = new DB(src, value);
+let db = new DB.DB(src, value);
 ```
 
 - src - is the path to your JSON file. (A mandatory parameter, but the file does not have to exist, but if it exists, it
@@ -38,7 +38,7 @@ That is, if in the file:
 And in the code:
 
 ```js
-const db = new DB("path/to/file.js", {age: 20});
+const db = new DB.DB("path/to/file.js", {age: 20});
 ```
 
 Then the file will be overwritten:
@@ -60,7 +60,7 @@ Through this method, you can change the value of the file. <strong style="color:
 data.</strong>
 
 ```js
-const db = new DB("path/to/file.json", {age: 20});
+const db = new DB.DB("path/to/file.json", {age: 20});
 
 db.set(callback);
 ```
@@ -88,5 +88,46 @@ variables in the file. Calling again will disable sync.
 
 ### :)
 
-Any data changes are automatically written to the file. If the "watch" function is enabled, when changing the file, the
+Any data changes are automatically written to the file. If the `watch` function is enabled, when changing the file, the
 variables from the file will be automatically pulled up.
+
+## DB.use
+
+If you need to use other data storage methods, you can use extensions based on the DB.Extension class.
+At the moment, there is support for such files as `JSON` (default), `INI`, `YAML`, `TOML`, `XML`.
+
+To use the extension there is a function `.use`
+
+Example:
+
+```js
+import DB from "the-lopster";
+
+DB.use(DB.XML);
+```
+
+## DB.Extension
+
+This is an extension class that accepts three parameters `ext`, `parse`, `stringify`.
+
+- ext - file extension with a dot at the beginning.
+- parse - a function that takes `string` and returns an `Object`
+- stringify - a function that takes `Object` and returns an `string`
+
+```ts
+import DB from "the-lopster";
+
+function parse(value: string): Object {
+}
+
+function stringify(value: Object): string {
+}
+
+let EXT = new DB.Extension(".ext", parse, stringify);
+```
+
+Using:
+
+```js
+DB.use(EXT);
+```

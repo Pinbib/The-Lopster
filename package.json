@@ -5,21 +5,22 @@
   "main": "./dist/mjs/index.js",
   "scripts": {},
   "keywords": [
-	"database",
-	"json",
-	"db"
+    "database",
+    "json",
+    "db"
   ],
   "type": "module",
   "author": "PinBib",
   "license": "ISC",
   "devDependencies": {
-	"@types/node": "^20.11.25",
-	"typescript": "^5.4.2"
+    "@types/node": "^20.11.25",
+    "typescript": "^5.4.2"
   },
   "dependencies": {
-	"@ltd/j-toml": "^1.38.0",
-	"ini": "^4.1.2",
-	"xml-js": "^1.6.11",
-	"yaml": "^2.4.1"
+    "@ltd/j-toml": "^1.38.0",
+    "cbor": "^9.0.2",
+    "ini": "^4.1.2",
+    "xml-js": "^1.6.11",
+    "yaml": "^2.4.1"
   }
 }
