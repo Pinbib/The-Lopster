@@ -1,6 +1,6 @@
 import { Extension } from "./Extension.js";
 type Change = (value: Object) => void;
-declare class DB {
+declare class Sherbet {
     private path;
     private value;
     private watcher?;
@@ -17,4 +17,4 @@ declare class DB {
     set(callback: Change): void;
     watch(): void;
 }
-export default DB;
+export default Sherbet;

@@ -8,7 +8,7 @@ const node_path_1 = __importDefault(require("node:path"));
 const Extension_js_1 = require("./Extension.js");
 let extensions = {};
 extensions[".json"] = new Extension_js_1.Extension(".json", JSON.parse, (value) => JSON.stringify(value, null, 2));
-class DB {
+class Sherbet {
     path = "";
     value = {};
     watcher;
@@ -29,6 +29,10 @@ class DB {
             this.value = value;
         }
         this.src = src;
+        process.on("SIGINT", () => {
+            this.save();
+            process.exit();
+        });
     }
     get src() {
         return this.path;
@@ -41,7 +45,6 @@ class DB {
     }
     set data(value) {
         this.value = value;
-        this.save();
     }
     static use(ext) {
         extensions[ext.ext] = ext;
@@ -81,10 +84,14 @@ class DB {
                     this.watch();
                 }
             });
+            process.on("SIGINT", () => {
+                this.save();
+                process.exit();
+            });
         }
         else {
             this.watcher.close();
         }
     }
 }
-exports.default = DB;
+exports.default = Sherbet;

@@ -1,25 +1,20 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const node_fs_1 = __importDefault(require("node:fs"));
-const node_path_1 = __importDefault(require("node:path"));
-const Extension_js_1 = require("./Extension.js");
+import fs from "node:fs";
+import path from "node:path";
+import { Extension } from "./Extension.js";
 let extensions = {};
-extensions[".json"] = new Extension_js_1.Extension(".json", JSON.parse, (value) => JSON.stringify(value, null, 2));
-class DB {
+extensions[".json"] = new Extension(".json", JSON.parse, (value) => JSON.stringify(value, null, 2));
+class Sherbet {
     path = "";
     value = {};
     watcher;
     ext = extensions[".json"];
     constructor(src, value = {}) {
-        src = node_path_1.default.resolve(src);
-        if (node_fs_1.default.existsSync(src) && node_fs_1.default.statSync(src).isFile()) {
-            let ext = node_path_1.default.extname(src);
+        src = path.resolve(src);
+        if (fs.existsSync(src) && fs.statSync(src).isFile()) {
+            let ext = path.extname(src);
             if (extensions[ext] !== undefined) {
                 this.ext = extensions[ext];
-                let file = node_fs_1.default.readFileSync(src, "utf-8");
+                let file = fs.readFileSync(src, "utf-8");
                 this.value = { ...this.parse(file.toString()), ...value };
             }
             else
@@ -29,19 +24,22 @@ class DB {
             this.value = value;
         }
         this.src = src;
+        process.on("SIGINT", () => {
+            this.save();
+            process.exit();
+        });
     }
     get src() {
         return this.path;
     }
     set src(value) {
-        this.path = node_path_1.default.resolve(value);
+        this.path = path.resolve(value);
     }
     get data() {
         return this.value;
     }
     set data(value) {
         this.value = value;
-        this.save();
     }
     static use(ext) {
         extensions[ext.ext] = ext;
@@ -53,7 +51,7 @@ class DB {
         return this.ext.stringify(value);
     }
     save() {
-        node_fs_1.default.writeFileSync(this.src, this.stringify(this.data));
+        fs.writeFileSync(this.src, this.stringify(this.data));
     }
     set(callback) {
         let data = this.data;
@@ -62,9 +60,9 @@ class DB {
     }
     watch() {
         if (this.watcher === undefined) {
-            this.watcher = node_fs_1.default.watch(this.src, (event, filename) => {
+            this.watcher = fs.watch(this.src, (event, filename) => {
                 if (event === "change") {
-                    node_fs_1.default.readFile(this.src, "utf-8", (err, data) => {
+                    fs.readFile(this.src, "utf-8", (err, data) => {
                         if (!err) {
                             try {
                                 this.value = this.ext.parse(data.toString());
@@ -81,10 +79,14 @@ class DB {
                     this.watch();
                 }
             });
+            process.on("SIGINT", () => {
+                this.save();
+                process.exit();
+            });
         }
         else {
             this.watcher.close();
         }
     }
 }
-exports.default = DB;
+export default Sherbet;

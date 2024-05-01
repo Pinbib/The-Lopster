@@ -9,7 +9,7 @@ let extensions: { [key: string]: Extension } = {};
 
 extensions[".json"] = new Extension(".json", JSON.parse, (value: Object) => JSON.stringify(value, null, 2));
 
-class DB {
+class Sherbet {
 	private path: string = "";
 	private value: Object = {};
 
@@ -34,6 +34,11 @@ class DB {
 		}
 
 		this.src = src;
+
+		process.on("SIGINT", () => {
+			this.save();
+			process.exit();
+		});
 	}
 
 	public get src(): string {
@@ -50,7 +55,6 @@ class DB {
 
 	public set data(value: Object) {
 		this.value = value;
-		this.save();
 	}
 
 	static use(ext: Extension) {
@@ -93,10 +97,15 @@ class DB {
 					this.watch();
 				}
 			});
+
+			process.on("SIGINT", () => {
+				this.save();
+				process.exit();
+			});
 		} else {
 			this.watcher.close();
 		}
 	}
 }
 
-export default DB;
+export default Sherbet;

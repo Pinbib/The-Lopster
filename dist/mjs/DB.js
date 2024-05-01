@@ -8,28 +8,6 @@ class DB {
     value = {};
     watcher;
     ext = extensions[".json"];
-    parse(value) {
-        return this.ext.parse(value);
-    }
-    stringify(value) {
-        return this.ext.stringify(value);
-    }
-    set src(value) {
-        this.path = path.resolve(value);
-    }
-    get src() {
-        return this.path;
-    }
-    set data(value) {
-        this.value = value;
-        this.save();
-    }
-    get data() {
-        return this.value;
-    }
-    static use(ext) {
-        extensions[ext.ext] = ext;
-    }
     constructor(src, value = {}) {
         src = path.resolve(src);
         if (fs.existsSync(src) && fs.statSync(src).isFile()) {
@@ -46,6 +24,28 @@ class DB {
             this.value = value;
         }
         this.src = src;
+    }
+    get src() {
+        return this.path;
+    }
+    set src(value) {
+        this.path = path.resolve(value);
+    }
+    get data() {
+        return this.value;
+    }
+    set data(value) {
+        this.value = value;
+        this.save();
+    }
+    static use(ext) {
+        extensions[ext.ext] = ext;
+    }
+    parse(value) {
+        return this.ext.parse(value);
+    }
+    stringify(value) {
+        return this.ext.stringify(value);
     }
     save() {
         fs.writeFileSync(this.src, this.stringify(this.data));
@@ -64,7 +64,8 @@ class DB {
                             try {
                                 this.value = this.ext.parse(data.toString());
                             }
-                            catch (err) { }
+                            catch (err) {
+                            }
                         }
                         else {
                             this.watch();

@@ -1,6 +1,8 @@
 import DB from "./DB.js";
 import * as Extension from "./Extension.js";
+import Sherbet from "./Sherbet.js";
 declare const _default: {
+    Sherbet: typeof Sherbet;
     JSON: Extension.Extension;
     YAML: Extension.Extension;
     TOML: Extension.Extension;
