@@ -1,26 +1,28 @@
 {
   "name": "the-lopster",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A small library for manipulating json files and using them to save data.",
-  "main": "./dist/mjs/index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/mjs/index.js",
+  "types": "./dist/mjs/index.d.ts",
   "scripts": {},
   "keywords": [
-    "database",
-    "json",
-    "db"
+	"database",
+	"json",
+	"db"
   ],
   "type": "module",
   "author": "PinBib",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.11.25",
-    "typescript": "^5.4.2"
+	"@types/node": "^20.11.25",
+	"typescript": "^5.4.2"
   },
   "dependencies": {
-    "@ltd/j-toml": "^1.38.0",
-    "cbor": "^9.0.2",
-    "ini": "^4.1.2",
-    "xml-js": "^1.6.11",
-    "yaml": "^2.4.1"
+	"@ltd/j-toml": "^1.38.0",
+	"cbor": "^9.0.2",
+	"ini": "^4.1.2",
+	"xml-js": "^1.6.11",
+	"yaml": "^2.4.1"
   }
 }
