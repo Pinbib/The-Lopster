@@ -11,7 +11,7 @@ import DB from "the-lopster";
 ## CommonJS
 
 ```js
-const DB = require("the-lopster/dist/cjs").default;
+const DB = require("the-lopster").default;
 ```
 
 ## new DB
@@ -20,11 +20,12 @@ const DB = require("the-lopster/dist/cjs").default;
 let db = new DB.DB(src, value);
 ```
 
-- src - is the path to your JSON file. (A mandatory parameter, but the file does not have to exist, but if it exists, it
+- `src` - is the path to your JSON file. (A mandatory parameter, but the file does not have to exist, but if it exists,
+  it
   should contain
   `{}` as a minimum)
 
-- value - this is a preset, the value of which will be set in the file, but if the file already contains the data, the
+- `value` - this is a preset, the value of which will be set in the file, but if the file already contains the data, the
   preference will be given to the data entered in this parameter (optional parameter)
 
 That is, if in the file:
@@ -65,7 +66,7 @@ const db = new DB.DB("path/to/file.json", {age: 20});
 db.set(callback);
 ```
 
-callback - This is a function:
+`callback` - This is a function:
 
 ```js
 db.set(function () {
@@ -110,9 +111,9 @@ DB.use(DB.XML);
 
 This is an extension class that accepts three parameters `ext`, `parse`, `stringify`.
 
-- ext - file extension with a dot at the beginning.
-- parse - a function that takes `string` and returns an `Object`
-- stringify - a function that takes `Object` and returns an `string`
+- `ext` - file extension with a dot at the beginning.
+- `parse` - a function that takes `string` and returns an `Object`
+- `stringify` - a function that takes `Object` and returns an `string`
 
 ```ts
 import DB from "the-lopster";
@@ -131,3 +132,12 @@ Using:
 ```js
 DB.use(EXT);
 ```
+
+## DB.Sherbet
+
+This is a slightly truncated analogue of `DB.DB`, it does not save data by itself, for this you need to call
+method `DB.Sherbet.save`.
+Also, when closed due to the combination of `CTRL+C`, when method `DB.Sherbet.watch` works, data will be saved.
+It reads data when an instance is created and when the program is closed, and all the rest of the time the data is
+stored in the RAM, which is why it is called Sherbet.
+Everything else works as in `DB.DB`.
