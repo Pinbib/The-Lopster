@@ -1,37 +1,23 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.INI = exports.XML = exports.TOML = exports.YAML = exports.JSON = exports.Sherbet = exports.Extension = exports.DB = void 0;
 const DB_js_1 = __importDefault(require("./DB.js"));
-const Extension = __importStar(require("./Extension.js"));
+exports.DB = DB_js_1.default;
+const Extension_js_1 = require("./Extension.js");
+Object.defineProperty(exports, "Extension", { enumerable: true, get: function () { return Extension_js_1.Extension; } });
 const Sherbet_js_1 = __importDefault(require("./Sherbet.js"));
+exports.Sherbet = Sherbet_js_1.default;
 const JSON_js_1 = __importDefault(require("./JSON.js"));
+exports.JSON = JSON_js_1.default;
 const _YAML_js_1 = __importDefault(require("./_YAML.js"));
+exports.YAML = _YAML_js_1.default;
 const TOML_js_1 = __importDefault(require("./TOML.js"));
+exports.TOML = TOML_js_1.default;
 const XML_js_1 = __importDefault(require("./XML.js"));
+exports.XML = XML_js_1.default;
 const _INI_js_1 = __importDefault(require("./_INI.js"));
-exports.default = { DB: DB_js_1.default, ...Extension, Sherbet: Sherbet_js_1.default, JSON: JSON_js_1.default, YAML: _YAML_js_1.default, TOML: TOML_js_1.default, XML: XML_js_1.default, INI: _INI_js_1.default };
+exports.INI = _INI_js_1.default;
+exports.default = DB_js_1.default;
