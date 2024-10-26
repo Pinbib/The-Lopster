@@ -1,49 +1,49 @@
 {
-  "name": "the-lopster",
-  "version": "0.1.7",
-  "description": "A small library for manipulating json files and using them to save data.",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/mjs/index.js",
-  "types": "./dist/mjs/index.d.ts",
-  "exports": {
-	".": {
-	  "require": "./dist/cjs/index.js",
-	  "import": "./dist/mjs/index.js"
+	"name": "the-lopster",
+	"version": "0.1.8",
+	"description": "A small library for manipulating json files and using them to save data.",
+	"main": "./dist/cjs/index.js",
+	"module": "./dist/mjs/index.js",
+	"types": "./dist/mjs/index.d.ts",
+	"exports": {
+		"default": {
+			"require": "./dist/cjs/index.js",
+			"import": "./dist/mjs/index.js"
+		},
+		"Extension": {
+			"require": "./dist/cjs/Extension.js",
+			"import": "./dist/mjs/Extension.js"
+		},
+		"DB": {
+			"require": "./dist/cjs/DB.js",
+			"import": "./dist/mjs/DB.js"
+		},
+		"Sherbet": {
+			"require": "./dist/cjs/Sherbet.js",
+			"import": "./dist/mjs/Sherbet.js"
+		}
 	},
-	"Extension": {
-	  "require": "./dist/cjs/Extension.js",
-	  "import": "./dist/mjs/Extension.js"
+	"scripts": {},
+	"keywords": [
+		"database",
+		"json",
+		"db",
+		"ini",
+		"xml",
+		"yaml",
+		"YAML",
+		"toml"
+	],
+	"author": "PinBib",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^20.11.25",
+		"typescript": "^5.4.2"
 	},
-	"DB": {
-	  "require": "./dist/cjs/DB.js",
-	  "import": "./dist/mjs/DB.js"
-	},
-	"Sherbet": {
-	  "require": "./dist/cjs/Sherbet.js",
-	  "import": "./dist/mjs/Sherbet.js"
+	"dependencies": {
+		"@ltd/j-toml": "^1.38.0",
+		"ini": "^4.1.2",
+		"xml-js": "^1.6.11",
+		"yaml": "^2.4.1"
 	}
-  },
-  "scripts": {},
-  "keywords": [
-	"database",
-	"json",
-	"db",
-	"ini",
-	"xml",
-	"yaml",
-	"YAML",
-	"toml"
-  ],
-  "author": "PinBib",
-  "license": "ISC",
-  "devDependencies": {
-	"@types/node": "^20.11.25",
-	"typescript": "^5.4.2"
-  },
-  "dependencies": {
-	"@ltd/j-toml": "^1.38.0",
-	"ini": "^4.1.2",
-	"xml-js": "^1.6.11",
-	"yaml": "^2.4.1"
-  }
 }
